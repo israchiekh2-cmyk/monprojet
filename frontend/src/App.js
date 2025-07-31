@@ -8,7 +8,8 @@ import Login from "./components/Login";
 
 // Composants Patient
 import PatientPage from "./components/PatientPage";
-import MedicalData from "./components/MedicalData";
+import MedicalData from './components/MedicalData';
+
 import Symptomes from "./components/Symptomes";
 import Glycemie from "./components/Glycemie";
 import ChatPatient from "./components/ChatPatient";

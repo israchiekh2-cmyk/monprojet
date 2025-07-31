@@ -123,5 +123,4 @@ function MedicalData() {
 export default MedicalData;
 
 
-
-
+ 
