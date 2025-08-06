@@ -146,7 +146,7 @@ function RendezVous() {
           ))}
 
         <button style={styles.retourBtn} onClick={() => navigate(-1)}>
-          ⬅ Retour
+            Retour
         </button>
       </div>
     </div>

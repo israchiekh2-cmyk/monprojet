@@ -5,12 +5,9 @@ function PatientPage() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // 🧽 Nettoyer les données de session (si utilisées)
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-
-    // 🔁 Redirection vers la page de connexion
-    navigate("/Login");
+    navigate("/login");
   };
 
   return (
@@ -23,11 +20,11 @@ function PatientPage() {
         />{" "}
         Bonjour, <b>Patient</b>
       </h1>
-      <p style={styles.subtitle}>Voici votre espace santé personnel</p> 
+      <p style={styles.subtitle}>Voici votre espace santé personnel</p>
 
       <div style={styles.box}>
         <div>
-          <b>🗃️ Mes donnée médicales</b>
+          <b>🗃️ Mes données médicales</b>
           <p style={styles.smallText}>Consulter vos constantes</p>
         </div>
         <button style={styles.button} onClick={() => navigate("/dossier")}>
@@ -49,7 +46,7 @@ function PatientPage() {
         <div>💊 Médicaments</div>
         <button
           style={{ ...styles.button, backgroundColor: "#7bed9f" }}
-          onClick={() => navigate("/medicaments")}
+          onClick={() => navigate("/medicament")}
         >
           Gérer
         </button>
@@ -89,14 +86,14 @@ const styles = {
     backgroundColor: "#fff1f6",
     minHeight: "100vh",
     padding: "30px",
-    fontFamily: "Arial"
+    fontFamily: "Arial",
   },
   header: {
-    fontSize: "28px"
+    fontSize: "28px",
   },
   subtitle: {
     color: "gray",
-    marginTop: "-10px"
+    marginTop: "-10px",
   },
   box: {
     backgroundColor: "white",
@@ -106,11 +103,11 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
+    boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
   },
   smallText: {
     fontSize: "12px",
-    color: "gray"
+    color: "gray",
   },
   button: {
     padding: "8px 16px",
@@ -118,7 +115,7 @@ const styles = {
     border: "none",
     borderRadius: "8px",
     fontWeight: "bold",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   logoutBtn: {
     padding: "10px 20px",
@@ -127,9 +124,10 @@ const styles = {
     border: "none",
     borderRadius: "10px",
     cursor: "pointer",
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 };
 
 export default PatientPage;
+
 

@@ -71,8 +71,8 @@ function SyndromesDangereux() {
       </ul>
 
       <div style={styles.buttonContainer}>
-        <button style={styles.button} onClick={() => navigate("/")}>
-          Retour
+        <button style={styles.button} onClick={() => navigate(-1)}>
+            Retour
         </button>
       </div>
     </div>
@@ -80,4 +80,4 @@ function SyndromesDangereux() {
 }
 
 export default SyndromesDangereux;
- 
+

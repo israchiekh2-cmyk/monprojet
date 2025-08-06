@@ -1,20 +1,20 @@
-// src/App.js
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Composants principaux
 import Home from "./components/Home";
 import Login from "./components/Login";
+import MotDePasseOublie from "./components/MotDePasseOublie";
+import Register from "./components/Register";
 
 // Composants Patient
 import PatientPage from "./components/PatientPage";
-import MedicalData from './components/MedicalData';
-
+import MedicalData from "./components/MedicalData";
 import Symptomes from "./components/Symptomes";
 import Glycemie from "./components/Glycemie";
 import ChatPatient from "./components/ChatPatient";
 import Rendezvous from "./components/Rendezvous";
-import Medicament from "./components/medicament"; // Attention : nom du fichier en minuscules
+import Medicament from "./components/medicament"; // attention à la casse du fichier
 
 // Composants Médecin
 import Medecien from "./components/medecien";
@@ -23,15 +23,19 @@ import SyndromesDangereux from "./components/SyndromesDangereux";
 
 // Autres
 import AssistantIA from "./components/AssistantIA";
+import SuiviGlycemie from './components/SuiviGlycemie';
+import ConseilsAlimentaires from './components/ConseilsAlimentaires';
+import RappelMedicaments from './components/RappelMedicaments';
+import QuestionsFrequentes from "./components/QuestionsFrequentes";
+import RapportHebdomadaire from "./components/RapportHebdomadaire";
 import Render from "./components/Render";
 
 function App() {
-  // Test de communication avec le backend (Node.js ou Flask par ex.)
   useEffect(() => {
     fetch("http://localhost:5000/")
-      .then(res => res.text())
-      .then(data => console.log("Réponse du backend :", data))
-      .catch(err => console.error("Erreur de connexion backend :", err));
+      .then((res) => res.text())
+      .then((data) => console.log("Réponse du backend :", data))
+      .catch((err) => console.error("Erreur de connexion backend :", err));
   }, []);
 
   return (
@@ -40,6 +44,8 @@ function App() {
         {/* Authentification & Accueil */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/motdepasseoublie" element={<MotDePasseOublie />} />
+        <Route path="/register" element={<Register />} />
 
         {/* Espace Patient */}
         <Route path="/patient" element={<PatientPage />} />
@@ -52,11 +58,17 @@ function App() {
 
         {/* Espace Médecin */}
         <Route path="/medecien" element={<Medecien />} />
-        <Route path="/ListePatients" element={<ListePatients />} />
-        <Route path="/SyndromesDangereux" element={<SyndromesDangereux />} />
+        <Route path="/listepatients" element={<ListePatients />} />
+        <Route path="/syndromesdangereux" element={<SyndromesDangereux />} />
 
         {/* Outils & Assistant */}
         <Route path="/assistant" element={<AssistantIA />} />
+               <Route path="/suiviglycemie" element={<SuiviGlycemie />} />
+        <Route path="/conseilsalimentaires" element={<ConseilsAlimentaires />} />
+        <Route path="/rappelmedicaments" element={<RappelMedicaments />} />
+        <Route path="/questionsfrequentes" element={<QuestionsFrequentes />} />
+        <Route path="/rapporthebdomadaire" element={<RapportHebdomadaire />} />
+
         <Route path="/render" element={<Render />} />
       </Routes>
     </Router>

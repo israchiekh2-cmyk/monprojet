@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ChatPatient() {
+  const navigate = useNavigate();
+
   const [messages, setMessages] = useState([
     { from: "patient", text: "Bonjour docteur !" },
     { from: "medecin", text: "Bonjour, comment puis-je vous aider ?" },
   ]);
   const [input, setInput] = useState("");
-  const [sender, setSender] = useState("medecin"); // choix temporaire de l'expéditeur
+  const [sender, setSender] = useState("medecin");
   const messagesEndRef = useRef(null);
 
-  // Scroll automatique vers le bas à chaque nouveau message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -27,59 +29,73 @@ function ChatPatient() {
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>💬 Chat avec patient</h2>
+    <>
+      <div style={styles.container}>
+        <h2 style={styles.title}>💬 Chat avec patient</h2>
 
-      <div style={styles.chatBox}>
-        {messages.map((msg, index) => (
-          <div
-            key={index}
+        <div style={styles.chatBox}>
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              style={{
+                ...styles.message,
+                alignSelf: msg.from === "medecin" ? "flex-end" : "flex-start",
+                backgroundColor:
+                  msg.from === "medecin" ? "#f9d5e5" : "#fce4ec",
+              }}
+            >
+              {msg.text}
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div style={styles.inputArea}>
+          <input
+            type="text"
+            placeholder="Écrire un message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            style={styles.input}
+          />
+          <button
+            onClick={sendMessage}
             style={{
-              ...styles.message,
-              alignSelf: msg.from === "medecin" ? "flex-end" : "flex-start",
-              backgroundColor: msg.from === "medecin" ? "#f9d5e5" : "#fce4ec",
+              ...styles.sendBtn,
+              opacity: input.trim() === "" ? 0.5 : 1,
+              cursor: input.trim() === "" ? "not-allowed" : "pointer",
             }}
+            disabled={input.trim() === ""}
           >
-            {msg.text}
-          </div>
-        ))}
-        <div ref={messagesEndRef} />
+            Envoyer
+          </button>
+        </div>
       </div>
 
-      <div style={styles.inputArea}>
-        <input
-          type="text"
-          placeholder="Écrire un message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          style={styles.input}
-        />
+      {/* Bouton Retour en dessous */}
+      <div style={styles.buttonContainer}>
         <button
-          onClick={sendMessage}
-          style={{
-            ...styles.sendBtn,
-            opacity: input.trim() === "" ? 0.5 : 1,
-            cursor: input.trim() === "" ? "not-allowed" : "pointer",
-          }}
-          disabled={input.trim() === ""}
+          onClick={() => navigate(-1)}
+          style={styles.backButton}
+          aria-label="Retour"
         >
-          Envoyer
+            Retour
         </button>
       </div>
-    </div>
+    </>
   );
 }
 
 const styles = {
   container: {
     maxWidth: "600px",
-    margin: "40px auto",
+    margin: "40px auto 20px",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     border: "1px solid #ddd",
     borderRadius: "10px",
-    backgroundColor: "#fff1f6", // rose clair global
+    backgroundColor: "#fff1f6",
     display: "flex",
     flexDirection: "column",
     height: "80vh",
@@ -87,18 +103,18 @@ const styles = {
   title: {
     marginBottom: "20px",
     textAlign: "center",
-    color: "#c2185b", // rose foncé pour titre
+    color: "#c2185b",
   },
   chatBox: {
     flex: 1,
     overflowY: "auto",
     padding: "10px",
-    border: "1px solid #f8bbd0", // bordure rose clair
+    border: "1px solid #f8bbd0",
     borderRadius: "8px",
     display: "flex",
     flexDirection: "column",
     gap: "10px",
-    backgroundColor: "#fce4ec", // rose très clair
+    backgroundColor: "#fce4ec",
   },
   message: {
     maxWidth: "70%",
@@ -117,16 +133,33 @@ const styles = {
     padding: "10px",
     fontSize: "14px",
     borderRadius: "8px",
-    border: "1px solid #f8bbd0", // rose clair
+    border: "1px solid #f8bbd0",
   },
   sendBtn: {
     padding: "10px 20px",
-    backgroundColor: "#c2185b", // bouton rose foncé
+    backgroundColor: "#c2185b",
     color: "white",
     border: "none",
     borderRadius: "8px",
   },
+  buttonContainer: {
+    maxWidth: "600px",
+    margin: "0 auto 40px",
+    textAlign: "center",
+  },
+  backButton: {
+    backgroundColor: "#ef4444",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    padding: "10px 30px",
+    fontWeight: "bold",
+    fontSize: "14px",
+    cursor: "pointer",
+  },
 };
 
 export default ChatPatient;
+
+
 

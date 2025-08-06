@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function ListePatients() {
+  const navigate = useNavigate();
+
   const patients = [
     { id: 1, nom: "Ali Ben Salah", age: 67, maladie: "Diabète type 2" },
     { id: 2, nom: "Sara Trabelsi", age: 52, maladie: "Hypertension" },
@@ -23,6 +26,10 @@ function ListePatients() {
           </div>
         ))}
       </div>
+
+      <button style={styles.backButton} onClick={() => navigate(-1)}>
+      Retour
+      </button>
     </div>
   );
 }
@@ -55,7 +62,22 @@ const styles = {
   avatar: {
     fontSize: "30px",
   },
+  backButton: {
+    marginTop: "30px",
+    padding: "12px 20px",
+    backgroundColor: "#d32f2f", // rouge vif
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontSize: "16px",
+    fontWeight: "bold",
+    display: "block",
+    textAlign: "center",
+ 
+  },
 };
 
 export default ListePatients;
+
 

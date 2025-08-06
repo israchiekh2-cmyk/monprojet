@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.jpg"; // adapte selon ton chemin
 
 function Home() {
   return (
     <div style={styles.container}>
-    <img src="/logo.jpg" alt="Logo Suivi Médical" style={styles.logo} />
+      <img src={logo} alt="Logo Suivi Médical" style={styles.logo} />
       <h1 style={styles.title}>Application de Suivi Médical</h1>
 
       <div style={styles.links}>
         <Link to="/Login" style={styles.link}>
-          🔐 Connexion 
+          🔐 Connexion
         </Link>
         <Link to="/patient" style={styles.link}>
           👤 Espace Patient
@@ -25,42 +26,75 @@ function Home() {
 const styles = {
   container: {
     minHeight: "100vh",
-    background: "linear-gradient(to right, #f0f4f8, #e0f7fa)",
-    padding: "40px",
+    background: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)",
+    padding: "60px 20px",
     textAlign: "center",
-    fontFamily: "Arial"
+    fontFamily:
+      "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "40px",
   },
   logo: {
-    width: "120px",
+    width: "140px",
     height: "auto",
-    marginBottom: "20px"
+    borderRadius: "16px",
+    boxShadow: "0 8px 16px rgba(59, 130, 246, 0.3)",
+    transition: "transform 0.3s ease",
+    cursor: "pointer",
   },
   title: {
-    fontSize: "32px",
-    fontWeight: "bold",
-    marginBottom: "40px",
-    color: "#1f2937"
+    fontSize: "36px",
+    fontWeight: "700",
+    margin: "0",
+    color: "#1e293b",
+    textShadow: "1px 1px 3px rgba(0,0,0,0.1)",
   },
   links: {
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
-    alignItems: "center"
+    gap: "24px",
+    width: "100%",
+    maxWidth: "320px",
   },
   link: {
     textDecoration: "none",
     fontSize: "18px",
-    padding: "10px 20px",
+    padding: "14px 24px",
     backgroundColor: "#3b82f6",
     color: "white",
-    borderRadius: "8px",
-    width: "200px",
+    borderRadius: "12px",
+    boxShadow: "0 6px 12px rgba(59, 130, 246, 0.25)",
+    fontWeight: "600",
+    transition: "background-color 0.3s ease, box-shadow 0.3s ease",
     textAlign: "center",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
-  }
+    userSelect: "none",
+  },
 };
 
+// Ajouter un effet hover via un petit trick inline (pas recommandé en prod,
+// mais ici pour garder tout dans le même fichier)
+
+const addHoverEffect = () => {
+  const links = document.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+      link.style.backgroundColor = "#2563eb";
+      link.style.boxShadow = "0 8px 16px rgba(37, 99, 235, 0.4)";
+    });
+    link.addEventListener("mouseleave", () => {
+      link.style.backgroundColor = "#3b82f6";
+      link.style.boxShadow = "0 6px 12px rgba(59, 130, 246, 0.25)";
+    });
+  });
+};
+
+setTimeout(addHoverEffect, 500);
+
 export default Home;
+
 
 
 

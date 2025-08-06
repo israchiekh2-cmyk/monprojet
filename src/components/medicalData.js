@@ -43,12 +43,14 @@ function MedicalData() {
             id="dossier"
             rows="5"
             required
+            placeholder="Exemple : Diabète de type 2, allergie aux pénicillines"
             style={{
               width: '100%',
               padding: '6px',
               borderRadius: '6px',
               border: '1px solid #ccc',
               marginTop: '5px',
+              resize: 'vertical',
             }}
           />
         </label>
@@ -59,6 +61,7 @@ function MedicalData() {
             id="nom"
             type="text"
             required
+            placeholder="Exemple : Dupont"
             style={{
               width: '100%',
               padding: '6px',
@@ -75,6 +78,7 @@ function MedicalData() {
             id="prenom"
             type="text"
             required
+            placeholder="Exemple : Marie"
             style={{
               width: '100%',
               padding: '6px',
@@ -121,6 +125,7 @@ function MedicalData() {
 }
 
 export default MedicalData;
+
 
 
  

@@ -17,19 +17,19 @@ function AssistantIA() {
       <h2 style={styles.title}>Assistant IA</h2>
 
       <div style={styles.card}>
-        <div style={styles.item} onClick={() => handleClick('/glycemie')}>
+        <div style={styles.item} onClick={() => handleClick('/SuiviGlycemie')}>
           🩸 Suivi de la glycémie
         </div>
-        <div style={styles.item} onClick={() => handleClick()}>
+        <div style={styles.item} onClick={() => handleClick('/ConseilsAlimentaires')}>
           🥗 Conseils alimentaires
         </div>
-        <div style={styles.item} onClick={() => handleClick()}>
+        <div style={styles.item} onClick={() => handleClick('/RappelMedicaments')}>
           💊 Rappel des médicaments
         </div>
-        <div style={styles.item} onClick={() => handleClick()}>
+        <div style={styles.item} onClick={() => handleClick('/QuestionsFrequentes')}>
           ❓ Questions fréquentes sur le diabète
         </div>
-        <div style={styles.item} onClick={() => handleClick()}>
+        <div style={styles.item} onClick={() => handleClick('/RapportHebdomadaire')}>
           📈 Rapport hebdomadaire de santé
         </div>
       </div>
@@ -95,3 +95,4 @@ const styles = {
 };
 
 export default AssistantIA;
+

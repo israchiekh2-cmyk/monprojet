@@ -6,7 +6,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Fonction handleSubmit corrigée
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,7 +42,6 @@ export default function Login() {
             justify-content: center;
             align-items: center;
           }
-
           .container {
             width: 100%;
             max-width: 400px;
@@ -54,23 +52,19 @@ export default function Login() {
             font-family: 'Segoe UI', sans-serif;
             color: #800040;
           }
-
           .form {
             display: flex;
             flex-direction: column;
           }
-
           .title {
             text-align: center;
             margin-bottom: 1.5rem;
             color: #0a0508ff;
           }
-
           .label {
             margin-top: 1rem;
             font-weight: 600;
           }
-
           .input {
             padding: 0.6rem;
             margin-top: 0.3rem;
@@ -78,7 +72,6 @@ export default function Login() {
             border: 1px solid #ff99cc;
             background-color: #fff0f5;
           }
-
           .button {
             margin-top: 1.5rem;
             padding: 0.75rem;
@@ -91,22 +84,18 @@ export default function Login() {
             cursor: pointer;
             transition: background 0.3s ease;
           }
-
           .button:hover {
             background-color: #e60073;
           }
-
           .links, .footer {
             margin-top: 1rem;
             text-align: center;
           }
-
           .link, .createLink {
             color: #cc007a;
             text-decoration: none;
             font-weight: bold;
           }
-
           .link:hover, .createLink:hover {
             text-decoration: underline;
           }
@@ -122,6 +111,7 @@ export default function Login() {
             id="email"
             type="email"
             autoComplete="email"
+            placeholder="exemple@domaine.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -133,6 +123,7 @@ export default function Login() {
             id="password"
             type="password"
             autoComplete="current-password"
+            placeholder="Votre mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -144,7 +135,7 @@ export default function Login() {
           </button>
 
           <div className="links">
-            <Link to="/forgot-password" className="link">Mot de passe oublié ?</Link>
+            <Link to="/MotDePasseOublie" className="link">Mot de passe oublié ?</Link>
           </div>
 
           <div className="footer">
@@ -156,4 +147,3 @@ export default function Login() {
     </div>
   );
 }
-
