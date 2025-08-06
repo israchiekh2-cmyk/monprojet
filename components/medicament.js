@@ -112,5 +112,4 @@ function Medicament() {
 export default Medicament;
 
 
-
  
